@@ -2,6 +2,7 @@ import React from 'react';
 import { useEvents } from '../context/EventsContext';
 import EventCard from './EventCard';
 import { useState, useMemo } from 'react';
+import ReactPaginate from 'react-paginate';
 import './EventList.css';
 
 function EventList() {
@@ -9,8 +10,13 @@ function EventList() {
     const [searchTerm, setSearchTerm] = useState('');
     const [filterBy, setFilterBy] = useState('all');
     const [sortBy, setSortBy] = useState('event_name');
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 5;
     const categories = [...new Set(events.map(event => event.event_category))];
   
+    const handlePageClick = ({ selected }) => {
+      setCurrentPage(selected);
+    }
     const handleSearchChange = (e) => {
       setSearchTerm(e.target.value);
     };
@@ -43,6 +49,11 @@ function EventList() {
         return 0;
       });
   }, [events, searchTerm, filterBy, sortBy]);
+
+  const pageCount = Math.ceil(processedEvents.length / itemsPerPage);
+  const currentItems = processedEvents.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+
+
   return (
     <div className='event-list'>
         <div>
@@ -65,10 +76,23 @@ function EventList() {
             </select>
         </div>
         <div >
-        {processedEvents.map(event => (
+        {currentItems.map(event => (
         <EventCard key={event.id} event={event} onSelect={() => selectEvent(event)} />
       ))}
     </div>
+    <ReactPaginate
+                previousLabel={'<'}
+                nextLabel={'>'}
+                breakLabel={'...'}
+                pageCount={pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={3}
+                onPageChange={handlePageClick}
+                containerClassName={'pagination'}
+                subContainerClassName={'pages pagination'}
+                activeClassName={'active'}
+            />
+
     </div>
   );
 }

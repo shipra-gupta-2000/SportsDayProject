@@ -5,7 +5,7 @@
 
 .event-list, .selected-event-list {
   width: 48%;
-  align-items: flex-end; 
+  padding: 5px;
 }
 
 .selected-event-list {
