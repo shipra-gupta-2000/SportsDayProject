@@ -5,6 +5,7 @@ import SelectedEventList from './components/SelectedEventList';
 import Header from './components/Header';
 import './App.css'; 
 import Footer from './components/Footer';
+import ErrorBoundary from './utility/ErrorBoundery';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <div className="App">
         <Header username="John Doe" />
         <div className="events-container">
+          <ErrorBoundary>
           <EventList />
+          </ErrorBoundary>
           <SelectedEventList />
         </div>
         <Footer />

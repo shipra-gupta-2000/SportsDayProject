@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEvents } from '../context/EventsContext';
+import './SelectedEventList.css';
 
 function SelectedEventList() {
   const { selectedEvents, deselectEvent } = useEvents();

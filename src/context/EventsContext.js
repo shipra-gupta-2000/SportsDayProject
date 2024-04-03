@@ -54,7 +54,7 @@ export const EventsProvider = ({ children }) => {
       Notify('warning','You can only select 3 events');
       return ;
     }
-    if (selectedEvents.some(e => e.start_time <= event.start_time && e.end_time >= event.start_time || e.start_time <= event.end_time && e.end_time >= event.end_time)) {
+    if (selectedEvents.some(e => e.start_time < event.start_time && e.end_time > event.start_time || e.start_time < event.end_time && e.end_time > event.end_time)) {
       Notify('warning','Conflicting event');
       return ;
     }
