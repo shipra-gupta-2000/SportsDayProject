@@ -1,0 +1,8 @@
+.event-list input[type="text"],
+.event-list select {
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 50%;
+    box-sizing: border-box;
+}

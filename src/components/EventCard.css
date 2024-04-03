@@ -1,0 +1,36 @@
+  .event-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 15px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.event-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.event-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.event-card button {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.event-card button:not([disabled]) {
+    background-color: #3498db; 
+    color: white;
+}
+
+.event-card button:disabled {
+    background-color: #2ecc71;
+    color: white;
+}
